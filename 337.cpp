@@ -36,7 +36,7 @@ private:
         }
         else
         {
-            // return sumNode(root->left) + sumNode(root->right);
+            return sumNode(root->left) + sumNode(root->right);
         }
     }
     void f(TreeNode* root)
@@ -46,16 +46,19 @@ private:
             yes = 0;
             no = 0;
         }
-        int y = root->val;
-        int n = 0;
-        f(root->left);
-        y += no;
-        n += max(yes,no);
-        f(root->right);
-        y += no;
-        n += max(yes,no);
-        yes = y;
-        no = n;
+        else
+        {
+            int y = root->val;
+            int n = 0;
+            f(root->left);
+            y += no;
+            n += max(yes,no);
+            f(root->right);
+            y += no;
+            n += max(yes,no);
+            yes = y;
+            no = n;
+        }
     }
 };
 
